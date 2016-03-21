@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Login</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="login_validate.js"></script>
+  <link rel="stylesheet" href="dynamics.css">
+  <!--
+	<link rel="stylesheet" href="bootstrap.css">
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="bootstrap.js"></script>
+	-->
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#myPage">Sankalp'16</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+      </ul>
+    </div>
+  </div>
+</nav>
+<div  class="container">
+<ul class="nav nav-pills nav-justified">
+    <li class="active"><a data-toggle="pill" href="#adm_login">Admin</a></li>
+    <li><a data-toggle="pill" href="#client_login">Client</a></li>
+  </ul>
+   <div class="tab-content">
+    <div id="adm_login" class="tab-pane fade in active">
+      <br><br><br><br>
+      <form name="fm_adm_login" action="admin.html" onsubmit="return login_validation(fm_adm_login)" method="post">
+        <center>
+        <table>
+          <tr>
+            <td>
+              <div class="input-group">
+                  <span class="input-group-addon" id="sizing-addon2"></span>
+                  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2" name="tb_username" id="tb_username">
+              </div><br>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="input-group">
+                  <span class="input-group-addon" id="sizing-addon2"></span>
+                  <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon2" name="tb_password" id="tb_password">
+              </div><br>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              <input class="btn btn-default" type="submit" name="bt_login" value="Login">
+            </td>
+          </tr>
+        </table>
+        </center>
+      </form>
+    </div>
+
+    <div id="client_login" class="tab-pane fade">
+      <br><br><br><br>
+      <form name="fm_client_login" action="verify.php" onsubmit="return login_validation(fm_client_login)" method="post">
+        <center>
+        <table>
+          <tr>
+            <td>
+              <div class="input-group">
+                    <span class="input-group-addon" id="sizing-addon2"></span>
+                    <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2" name="tb_username" id="tb_username">
+              </div><br>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="input-group">
+                  <span class="input-group-addon" id="sizing-addon2"></span>
+                  <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon2" name="tb_password" id="tb_password">
+              </div><br>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              <input class="btn btn-default" type="submit" name="bt_clnt_login" value="Login" >
+            </td>
+          </tr>
+          </table>
+        </center>
+      </form>
+    </div>
+  </div>
+</div>
+<footer class="text-center">
+  <h5>copyright@2016</h5>
+</footer>
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+    $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+      event.preventDefault();
+      var hash = this.hash;
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+        window.location.hash = hash;
+      });
+    });
+  })
+</script>
+</body>
+</html>

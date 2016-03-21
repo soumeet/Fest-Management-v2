@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Client</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="user_validate.js"></script>
+	<script type="text/javascript" src="group_validate.js"></script>
+	<!--
+	<link rel="stylesheet" href="bootstrap.css">
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="bootstrap.js"></script>
+	-->
+<link rel="stylesheet" href="dynamics.css">
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#myPage">Sankalp'16</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+				<li><a href="login.html">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+	</nav>
+
+	<div  class="container">
+	<h2>Welcome!</h2><br>
+  <ul class="nav nav-pills nav-justified">
+    <li><a data-toggle="pill" href="#usr_reg">User Registration</a></li>
+    <li><a data-toggle="pill" href="#grp_reg">Group Registration</a></li>
+    <li><a data-toggle="pill" href="#usr_search">User Search</a></li>
+    <li><a data-toggle="pill" href="#grp_search">Group Search</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="usr_reg" class="tab-pane fade">
+		<br><br>
+		<center>
+			<form name="fm_usr_register" onsubmit="return user_validation(fm_usr_register)" method="post" action="user_registered.php">
+			<table>
+				<tr>
+					<td>
+						<div class="input-group">
+								<span class="input-group-addon" id="sizing-addon2"></span>
+								<input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon2" name="tb_name" id="tb_name">
+						</div><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="input-group">
+								<span class="input-group-addon" id="sizing-addon2"></span>
+								<input type="text" class="form-control" placeholder="Mobile Number" aria-describedby="sizing-addon2" name="tb_mobile" id="tb_mobile">
+						</div><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="input-group">
+								<span class="input-group-addon" id="sizing-addon2"></span>
+								<input type="text" class="form-control" placeholder="Email ID" aria-describedby="sizing-addon2" name="tb_email" id="tb_email">
+						</div><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="input-group">
+								<span class="input-group-addon" id="sizing-addon2"></span>
+								<input type="text" class="form-control" placeholder="College" aria-describedby="sizing-addon2"name="tb_college" id="tb_college">
+						</div><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label class="radio inline">
+							&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+								<input type="radio" name="rb_gender" id="rb_gender" value="M" checked>
+								Male
+								&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+								<input type="radio" name="rb_gender" id="rb_gender" value="F">
+								Female
+						</label><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						&nbsp&nbsp&nbsp
+						<input class="btn btn-default" type="submit" name="bt_register" value="Register">
+						&nbsp&nbsp&nbsp&nbsp
+						<input class="btn btn-default" type="submit" name="bt_cancel" value="Cancel">
+					</td>
+				</tr>
+				</table>
+			</form>
+		</center>
+    </div>
+    <div id="grp_reg" class="tab-pane fade">
+			<center>
+				<br><br>
+			</center>
+			<center>
+				<form name="fm_grp_registration" onsubmit="return group_validation(fm_grp_registration)" method="post" action="group_registered.php">
+				<table>
+					<tr>
+						<td>
+							<div class="input-group">
+		  						<span class="input-group-addon" id="sizing-addon2"></span>
+		  						<input type="text" class="form-control" placeholder="Group Name" aria-describedby="sizing-addon2" name="tb_grp_name" id="tb_grp_name">
+							</div><br>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group">
+								<select class="form-control" name="cb_event" id="cb_event">
+									<option value="EVENT">Event</option>
+									<option value="ROBOWAR">RoboWar</option>
+									<option value="ROBOEXPLORER">RoboXplorer</option>
+									<option value="ROBOSOCCER">RoboSoccer</option>
+									<option value="CS16">CounterStrike</option>
+									<option value="FIFA">Fifa</option>
+									<option value="NFS">Need For Speed</option>
+									<option value="CODING">Coding</option>
+									<option value="JUNKYARD">JunkYard</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="input-group">
+		  						<span class="input-group-addon" id="sizing-addon2"></span>
+		  						<input type="text" class="form-control" placeholder="Member 1" aria-describedby="sizing-addon2" name="tb_mem1" id="tb_mem1">
+							</div><br>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="input-group">
+		  						<span class="input-group-addon" id="sizing-addon2"></span>
+		  						<input type="text" class="form-control" placeholder="Member 2" aria-describedby="sizing-addon2" name="tb_mem2" id="tb_mem2">
+							</div><br>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="input-group">
+		  						<span class="input-group-addon" id="sizing-addon2"></span>
+		  						<input type="text" class="form-control" placeholder="Member 3" aria-describedby="sizing-addon2" name="tb_mem3" id="tb_mem3">
+							</div><br>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="input-group">
+		  						<span class="input-group-addon" id="sizing-addon2"></span>
+		  						<input type="text" class="form-control" placeholder="Member 4" aria-describedby="sizing-addon2" name="tb_mem4" id="tb_mem4">
+							</div><br>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							&nbsp&nbsp&nbsp
+							<input class="btn btn-default" type="submit" name="bt_register" value="Register">
+							&nbsp&nbsp&nbsp&nbsp
+							<input class="btn btn-default" type="submit" name="bt_cancel" value="Cancel">
+						</td>
+					</tr>
+					</table>
+				</form>
+			</center>
+    </div>
+    <div id="usr_search" class="tab-pane fade">
+			<br><br>
+			<form name="fm_usr_search" action="" onsubmit="return validation(fm_adm_login)" method="GET">
+				<center>
+				<table>
+					<tr>
+						<td>
+							<div class="input-group">
+		  						<span class="input-group-addon" id="basic-addon1">@</span>
+		  						<input type="text" class="form-control" placeholder="User Name" aria-describedby="basic-addon1"  name="tb_name" id="tb_name">
+							</div>
+						</td>
+						<td>
+							&nbsp<input class="btn btn-default" type="submit" value="Search" name="bt_search" id="bt_search">
+						</td>
+					</tr>
+				</table>
+				</center>
+			</form>
+			<h3>User List</h3>
+			<p>#Message</p>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Gender</th>
+						<th>Mobile</th>
+						<th>Email ID</th>
+						<th>College</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+						if(isset($_GET['bt_search'])){
+							/*if(empty($_GET['tb_name'])){
+								echo "Enter a search term";
+							}*/
+							$name = $_GET['tb_name'];
+							//echo $name;
+							include("db_connection.php");
+							if($name==""){
+								$sql = "SELECT * FROM db_users";
+							}else{
+								$sql = "SELECT * FROM db_users WHERE name = '$name'";
+							}
+							$result = mysqli_query($con, $sql);
+							while ($row = mysqli_fetch_array($result)){
+								echo "<tr>
+									<td>$row[id]</td>
+									<td>$row[name]</td>
+									<td>$row[gender]</td>
+									<td>$row[mobile]</td>
+									<td>$row[email]</td>
+									<td>$row[college]</td>
+								</tr>";
+							}
+						}
+					?>
+				</tbody>
+			</table>
+		</div>
+    <div id="grp_search" class="tab-pane fade">
+			<br><br>
+			<form name="fm_grp_search" action="#" onsubmit="return validation(fm_grp_search)" method="GET">
+				<center>
+				<table>
+					<tr>
+						<td>
+							<div class="input-group">
+		  						<span class="input-group-addon" id="basic-addon1">@</span>
+		  						<input type="text" class="form-control" placeholder="Group Name" aria-describedby="basic-addon1" name="tb_name" id="tb_name">
+							</div>
+						</td>
+						<td>
+							&nbsp<input class="btn btn-default" type="submit" value="Search" name="bt_search" id="bt_search">
+						</td>
+					</tr>
+				</table>
+				</center>
+			</form>
+			<h3>Group List</h3>
+			<p>#Message</p>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Event</th>
+						<th>Member 1</th>
+						<th>Member 2</th>
+						<th>Member 3</th>
+						<th>Member 4</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+						if(isset($_GET['bt_search'])){
+							/*if(empty($_GET['tb_name'])){
+								echo "Enter a search term";
+							}*/
+							$name = $_GET['tb_name'];
+							//echo $name;
+							include("db_connection.php");
+							if($name==""){
+								$sql = "SELECT * FROM db_groups";
+							}else{
+								$sql = "SELECT * FROM db_groups WHERE name = '$name'";
+							}
+							$result = mysqli_query($con, $sql);
+							while ($row = mysqli_fetch_array($result)){
+								echo "<tr>
+									<td>$row[group_id]</td>
+									<td>$row[name]</td>
+									<td>$row[event]</td>
+									<td>$row[member1]</td>
+									<td>$row[member2]</td>
+									<td>$row[member3]</td>
+									<td>$row[member4]</td>
+								</tr>";
+							}
+						}
+					?>
+				</tbody>
+			</table>
+			</div>
+  </div>
+</div>
+<footer class="text-center">
+  <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a><br><br>
+  <h5>copyright@2016</h5>
+</footer>
+<script>
+	$(document).ready(function(){
+	  $('[data-toggle="tooltip"]').tooltip();
+	  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+	    event.preventDefault();
+	    var hash = this.hash;
+	    $('html, body').animate({
+	      scrollTop: $(hash).offset().top
+	    }, 900, function(){
+	      window.location.hash = hash;
+	    });
+	  });
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="dynamics.css">
+  <!--
+	<link rel="stylesheet" href="bootstrap.css">
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="bootstrap.js"></script>
+	-->
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#myPage">Sankalp'16</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="login.html">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!--
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="fifa.jpg" alt="Fifa" width="1200" height="700">
+        <div class="carousel-caption">
+          <h3>FIFA</h3>
+        </div>
+      </div>
+      <div class="item">
+        <img src="camera.jpg" alt="Momentica" width="1200" height="700">
+        <div class="carousel-caption">
+          <h3>Momentica</h3>
+        </div>
+      </div>
+      <div class="item">
+        <img src="robowar.jpg" alt="Robo War" width="1200" height="700">
+        <div class="carousel-caption">
+          <h3>Robo War</h3>
+        </div>
+      </div>
+    </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+-->
+<div  class="container">
+  <ul class="nav nav-tabs">
+         <li><a data-toggle="tab" href="#client_registration">Client Registration</a></li>
+         <li><a data-toggle="tab" href="#user_search">Users</a></li>
+         <li><a data-toggle="tab" href="#group_search">Groups</a></li>
+       </ul>
+      <div class="tab-content">
+        <div id="client_registration" class="tab-pane fade">
+          <center>
+            <h2>Client Registration</h2><br>
+          </center>
+          <center>
+            <form name="fm_cln_register" onsubmit="return client_validation(fm_cln_register)" method="post" action="client_registered.php">
+              <table>
+                <tr>
+                  <td>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="sizing-addon2"></span>
+                      <input type="text" class="form-control" placeholder="First Name" aria-describedby="sizing-addon2" name="tb_fname" id="tb_fname">
+                    </div><br>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="sizing-addon2"></span>
+                      <input type="text" class="form-control" placeholder="Last Name" aria-describedby="sizing-addon2" name="tb_lname" id="tb_lname">
+                    </div><br>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="sizing-addon2"></span>
+                      <input type="text" class="form-control" placeholder="Mobile Number" aria-describedby="sizing-addon2" name="tb_mobile" id="tb_mobile">
+                    </div><br>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="sizing-addon2"></span>
+                      <input type="text" class="form-control" placeholder="Email ID" aria-describedby="sizing-addon2" name="tb_email" id="tb_email">
+                    </div><br>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="sizing-addon2"></span>
+                      <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2" name="tb_username" id="tb_username">
+                    </div><br>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="sizing-addon2"></span>
+                      <input type="text" class="form-control" placeholder="Password" aria-describedby="sizing-addon2" name="tb_password" id="tb_password">
+                    </div><br>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="radio inline">
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input type="radio" name="rb_gender" id="rb_gender" value="M" checked>
+                        Male&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input type="radio" name="rb_gender" id="rb_gender" value="F">
+                        Female
+                    </label><br>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    &nbsp&nbsp
+                    <input class="btn btn-default" type="submit" name="bt_clnt_register" value="Register">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <input class="btn btn-default" type="submit" name="bt_cancel" value="Cancel">
+                  </td>
+                </tr>
+              </table>
+            </form>
+          </center>
+        </div>
+          <div id="user_search" class="tab-pane fade">
+            <br><br>
+            <form name="fm_adm_usr" action="" onsubmit="return validation(fm_adm_usr)" method="GET">
+              <center>
+                <table>
+                  <tr>
+                    <td>
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">@</span>
+                        <input type="text" class="form-control" placeholder="User ID" aria-describedby="basic-addon1" name="tb_uid" id="tb_uid">
+                      </div>
+                    </td>
+                    <td>
+                      &nbsp<input class="btn btn-default" type="submit" value="Search" name="bt_usr_search" id="bt_usr_search">
+                    </td>
+                  </tr>
+                </table></center>
+              </form>
+                <h2>User List</h2>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Gender</th>
+                      <th>Mobile</th>
+                      <th>Email ID</th>
+                      <th>College</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    if(isset($usr_result)){
+                    while ($row = mysqli_fetch_array($usr_result)){
+                      $uid = $row['id'];
+                      $name = $row['name'];
+                      $gender = $row['gender'];
+                      $mobile = $row['mobile'];
+                      $email = $row['email'];
+                      $college = $row['college'];
+                      ?>
+                      <form name="fm_adm_usr_update" action="" onsubmit="return validation(fm_adm_usr)" method="GET">
+                      <tr>
+                        <td>
+                          <div class="input-group">
+                            <input type="text" readonly class="form-control" placeholder="ID" aria-describedby="basic-addon1"  name="tb_uid" id="tb_uid" value="<?php  echo $uid; ?>">
+                          </div>
+                        </td>
+                        <td>
+                          <div class="input-group">
+                            <input type="text" class="form-control" placeholder="User Name" aria-describedby="basic-addon1"  name="tb_name" id="tb_name" value="<?php echo $name; ?>">
+                          </div>
+                        </td>
+                        <td>
+                          <label class="radio inline">
+                            <center>
+                              <input type="radio" name="rb_gender" id="rb_gender" value="MALE" <?php if($gender=='M') echo "checked"; ?>>
+                              M&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                              <input type="radio" name="rb_gender" id="rb_gender" value="FEMALE" <?php if($gender=='F') echo "checked"; ?>>
+                              F
+                            </center>
+                          </label>
+                        </td>
+                        <td>
+                          <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Mobile" aria-describedby="basic-addon1" name="tb_mobile" id="tb_mobile" value="<?php echo $mobile; ?>">
+                          </div>
+                        </td>
+                        <td>
+                          <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Email" aria-describedby="basic-addon1" name="tb_email" id="tb_email" value="<?php echo $email; ?>">
+                          </div>
+                        </td>
+                        <td>
+                          <div class="input-group">
+                            <input type="text" class="form-control" placeholder="College" aria-describedby="basic-addon1" name="tb_college" id="tb_college" value="<?php echo $college; ?>">
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                          <center><input class="btn btn-default" type="submit" name="bt_usr_update" id="bt_usr_update" value="Update"></center>
+                        </td>
+                        <td>
+                          <center><input class="btn btn-default" type="submit" name="bt_usr_delete" id="bt_usr_update" value="Delete"></center>
+                        </td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      </form>
+                      <?php }} ?>
+                    </tbody>
+                  </table>
+              </div>
+              <div id="group_search" class="tab-pane fade">
+                <center>
+                  <h2>  </h2>
+                </center>
+                <form name="fm_adm_grp" action="" onsubmit="return validation(fm_adm_grp)" method="GET">
+                  <center>
+                    <table>
+                      <tr>
+                        <td>
+                          <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">@</span>
+                            <input type="text" class="form-control" placeholder="Group ID" aria-describedby="basic-addon1" name="tb_gid" id="tb_gid">
+                          </div>
+                        </td>
+                        <td>
+                          &nbsp<input class="btn btn-default" type="submit" value="Search" name="bt_grp_search" id="bt_grp_search">
+                        </td>
+                      </tr>
+                    </table></center>
+                  </form>
+                    <h2>Group List</h2>
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Name</th>
+                          <th>Event</th>
+                          <th>Member 1</th>
+                          <th>Member 2</th>
+                          <th>Member 3</th>
+                          <th>Member 4</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                        if(isset($grp_result)){
+                        while ($row = mysqli_fetch_array($grp_result)){
+                          $gid = $row['group_id'];
+                          $name = $row['name'];
+                          $event = $row['event'];
+                          $mem1 = $row['member1'];
+                          $mem2 = $row['member2'];
+                          $mem3 = $row['member3'];
+                          $mem4 = $row['member4'];
+                        ?>
+                        <form name="fm_adm_usr_update" action="" onsubmit="return validation(fm_adm_usr)" method="GET">
+                          <tr>
+                            <td>
+                              <div class="input-group">
+                                <input type="text" readonly class="form-control" placeholder="ID" aria-describedby="basic-addon1"  name="tb_gid" id="tb_gid" value="<?php  echo $gid; ?>">
+                              </div>
+                            </td>
+                            <td>
+                              <div class="input-group">
+                                <input type="text" class="form-control" placeholder="User Name" aria-describedby="basic-addon1"  name="tb_name" id="tb_name" value="<?php echo $name; ?>">
+                              </div>
+                            </td>
+                            <td>
+                              <div class="form-group">
+                                <select class="form-control" name="cb_event" id="cb_event">
+                                  <option value="ROBOWAR" <?php if ($event=="ROBOWAR") {?> selected="selected" <?php } ?>>RoboWar</option>
+                                  <option value="ROBOEXPLORER" <?php if ($event=="ROBOEXPLORER") {?> selected="selected" <?php } ?>>RoboXplorer</option>
+                                  <option value="ROBOSOCCER"<?php if ($event=="ROBOSOCCER") {?> selected="selected" <?php } ?>>RoboSoccer</option>
+                                  <option value="CS16" <?php if ($event=="CS16") {?> selected="selected" <?php } ?>>CounterStrike</option>
+                                  <option value="FIFA"<?php if ($event=="FIFA") {?> selected="selected" <?php } ?> >Fifa</option>
+                                  <option value="NFS" <?php if ($event=="NFS") {?> selected="selected" <?php } ?>>Need For Speed</option>
+                                  <option value="CODING" <?php if ($event=="CODING") {?> selected="selected" <?php } ?>>Coding</option>
+                                  <option value="JUNKYARD" <?php if ($event=="JUNKYARD") {?> selected="selected" <?php } ?>>JunkYard</option>
+                                </select>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Mobile" aria-describedby="basic-addon1" name="tb_mem1" id="tb_mem1" value="<?php echo $mem1; ?>">
+                              </div>
+                            </td>
+                            <td>
+                              <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Email" aria-describedby="basic-addon1" name="tb_mem2" id="tb_mem2" value="<?php echo $mem2; ?>">
+                              </div>
+                            </td>
+                            <td>
+                              <div class="input-group">
+                                <input type="text" class="form-control" placeholder="College" aria-describedby="basic-addon1" name="tb_mem3" id="tb_mem3" value="<?php echo $mem3; ?>">
+                              </div>
+                            </td>
+                            <td>
+                              <div class="input-group">
+                                <input type="text" class="form-control" placeholder="College" aria-describedby="basic-addon1" name="tb_mem4" id="tb_mem4" value="<?php echo $mem4; ?>">
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                              <center><input class="btn btn-default" type="submit" name="bt_grp_update" id="bt_grp_update" value="Update"></center>
+                            </td>
+                            <td></td>
+                            <td>
+                              <center><input class="btn btn-default" type="submit" name="bt_grp_delete" id="bt_grp_delete" value="Delete"></center>
+                            </td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          </form>
+                          <?php }} ?>
+                        </tbody>
+                      </table>
+                  </div>
+        </div>
+</div>
+<footer class="text-center">
+  <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a><br><br>
+  <h3>copyright@2016</h3>
+</footer>
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+    $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+      event.preventDefault();
+      var hash = this.hash;
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+        window.location.hash = hash;
+      });
+    });
+  })
+</script>
+</body>
+</html>
