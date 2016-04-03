@@ -27,7 +27,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="login.html">Logout</a></li>
+	<li><a href="login.html">Logout</a></li>
       </ul>
     </div>
   </div>
@@ -326,25 +326,8 @@
                   </div>
         </div>
 </div>
-<footer class="text-center">
-  <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
-    <span class="glyphicon glyphicon-chevron-up"></span>
-  </a><br><br>
+<!--<footer class="text-center">
   <h3>copyright@2016</h3>
-</footer>
-<script>
-  $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-    $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
-      event.preventDefault();
-      var hash = this.hash;
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 900, function(){
-        window.location.hash = hash;
-      });
-    });
-  })
-</script>
+</footer>-->
 </body>
 </html>

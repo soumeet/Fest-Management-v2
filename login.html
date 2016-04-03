@@ -8,9 +8,6 @@
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato" >
   <link rel="stylesheet"  type="text/css" href="css/montserrat.css" >
   <link rel="stylesheet" href="css/dynamics.css">
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/login_validate.js"></script>
 
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -70,9 +67,26 @@
       </form>
     </div>
 
+       <!--onsubmit="return login_validation(fm_client_login)"-->
+    <!--<div class="col-md-4 contact-form">
+        <h3>Drop us a line</h3>
+        <div id="show_contact_msg"></div>
+        <form class="ajax-form" method="post" name="contact_form" id="contact_form" action="php/verify.php">
+            <div class="form-group">
+                <input type="text" class="form-control" id="tb_username" name="tb_username" placeholder="Username" value="" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="tb_password" name="tb_password" placeholder="Password" value="" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" name="bt_clnt_login" id="bt_clnt_login" class="btn btn-default"><i class="fa fa-paper-plane fa-fw"></i> Login</button>
+            </div>
+        </form>
+</div>-->
+       
     <div id="client_login" class="tab-pane fade">
       <br><br><br><br>
-      <form name="fm_client_login" action="verify.php" onsubmit="return login_validation(fm_client_login)" method="post">
+      <form class="ajax-form" name="fm_client_login" onsubmit="return login_validation(fm_client_login)" action="php/verify.php" method="post">
         <center>
         <table>
           <tr>
@@ -101,24 +115,17 @@
         </center>
       </form>
     </div>
+       
   </div>
 </div>
+<!--
 <footer class="text-center">
   <h5>copyright@2016</h5>
 </footer>
-<script>
-  $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-    $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
-      event.preventDefault();
-      var hash = this.hash;
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 900, function(){
-        window.location.hash = hash;
-      });
-    });
-  })
-</script>
+-->
+    
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/login_validate.js"></script>
 </body>
 </html>

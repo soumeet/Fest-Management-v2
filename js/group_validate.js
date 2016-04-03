@@ -7,6 +7,8 @@ function group_validation(form){
 	var MEM2 = form.tb_mem2.value;
 	var MEM3 = form.tb_mem3.value;
 	var MEM4 = form.tb_mem4.value;
+	var MEM5 = form.tb_mem5.value;
+    
 	if (GROUPNAME=="") {
 		alert("Group Name cannot be empty");
 		return false;
@@ -28,6 +30,10 @@ function group_validation(form){
 		return false;
 	}
 	if (!RE_NAME.test(MEM4)) {
+		alert("Invalid Member 4 Name");
+		return false;
+	}
+    if (!RE_NAME.test(MEM5)) {
 		alert("Invalid Member 4 Name");
 		return false;
 	}
