@@ -94,7 +94,7 @@ $("#fm_event_list").submit(function(e){
 		alert("Select a Event");
 		return false;
 	}
-   
+  
     $.ajax({   
             url : formURL,
   			type: "POST",
@@ -107,24 +107,17 @@ $("#fm_event_list").submit(function(e){
                                     //alert("found "+data.id+" "+data.name);
                                     $('#show_contact_msg').html(data.length+' records found');
                                     //alert(data[0][0]);
+                                    //alert('<a href="php/user_details.php?id='+data[0][3]+'">'+data[0][3]+'</a>');
+                                    //data[0][3]='<a href="php/user_details.php?id='+data[0][3]+'">'+data[0][3]+'</a>';
                                     for(var i=0;i<data.length;i++){
+                                        /*data[i][3]='<a href="php/user_details.php?id='+data[i][3]+'">'+data[i][3]+'</a>';
+                                        data[i][4]='<a href="php/user_details.php?id='+data[i][4]+'">'+data[i][4]+'</a>';
+                                        data[i][5]='<a href="php/user_details.php?id='+data[i][5]+'">'+data[i][5]+'</a>';
+                                        data[i][6]='<a href="php/user_details.php?id='+data[i][6]+'">'+data[i][6]+'</a>';
+                                        data[i][7]='<a href="php/user_details.php?id='+data[i][7]+'">'+data[i][7]+'</a>';*/
                                         $('#table_result > tbody:last-child').append('<tr><td>'+data[i][0]+'</td><td>'+data[i][1]+'</td><td>'+data[i][3]+'</td><td>'+data[i][4]+'</td><td>'+data[i][5]+'</td><td>'+data[i][6]+'</td><td>'+data[i][7]+'</td></tr>');
-                                        /*$('#gid').html(data[i][0]);
-                                        $('#gn').html(data[i][1]);
-                                        $('#m1').html(data[i][3]);
-                                        $('#m2').html(data[i][4]);
-                                        $('#m3').html(data[i][5]);
-                                        $('#m4').html(data[i][6]);
-                                        $('#m5').html(data[i][7]);*/
                                     };
-                                     
-                                    /*$('#gid').html(data[0][0]);
-                                    $('#gn').html(data[0][1]);
-                                    $('#m1').html(data[0][3]);
-                                    $('#m2').html(data[0][4]);
-                                    $('#m3').html(data[0][5]);
-                                    $('#m4').html(data[0][6]);
-                                    $('#m5').html(data[0][7]);*/
+                                    //$("a").attr("href", "php/user_details.php?id='+data[i][0]+'");
   								 }else{
                                      $('#show_contact_msg').html('no records found');
                                      $("#table_result tbody > tr").remove(); 
