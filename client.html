@@ -128,7 +128,7 @@
 					<td>
 						<div class="input-group">
 								<span class="input-group-addon" id="sizing-addon2"></span>
-								<input type="text" class="form-control" aria-describedby="sizing-addon2" name="tb_mem1" id="tb_mem1" value="Member 1" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Member 1';}">
+								<input type="text" class="form-control" aria-describedby="sizing-addon2" name="tb_mem1" id="tb_mem1" value="Member 1 ID" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Member 1 ID';}">
 						</div><br>
 					</td>
 				</tr>
@@ -136,7 +136,7 @@
 					<td>
 						<div class="input-group">
 								<span class="input-group-addon" id="sizing-addon2"></span>
-								<input type="text" class="form-control" aria-describedby="sizing-addon2" name="tb_mem2" id="tb_mem2" value="Member 2" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Member 2';}">
+								<input type="text" class="form-control" aria-describedby="sizing-addon2" name="tb_mem2" id="tb_mem2" value="Member 2  ID" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Member 2 ID';}">
 						</div><br>
 					</td>
 				</tr>
@@ -144,7 +144,7 @@
 					<td>
 						<div class="input-group">
 								<span class="input-group-addon" id="sizing-addon2"></span>
-								<input type="text" class="form-control" aria-describedby="sizing-addon2" name="tb_mem3" id="tb_mem3" value="Member 3" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Member 3';}">
+								<input type="text" class="form-control" aria-describedby="sizing-addon2" name="tb_mem3" id="tb_mem3" value="Member 3 ID" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Member 3 ID';}">
 						</div><br>
 					</td>
 				</tr>
@@ -152,7 +152,7 @@
 					<td>
 						<div class="input-group">
 								<span class="input-group-addon" id="sizing-addon2"></span>
-								<input type="text" class="form-control" aria-describedby="sizing-addon2" name="tb_mem4" id="tb_mem4" value="Member 4" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Member 4';}">
+								<input type="text" class="form-control" aria-describedby="sizing-addon2" name="tb_mem4" id="tb_mem4" value="Member 4 ID" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Member 4 ID';}">
 						</div><br>
 					</td>
 				</tr>
@@ -160,7 +160,7 @@
 					<td>
 						<div class="input-group">
 								<span class="input-group-addon" id="sizing-addon2"></span>
-								<input type="text" class="form-control" aria-describedby="sizing-addon2" name="tb_mem5" id="tb_mem5" value="Member 5" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Member 5';}">
+								<input type="text" class="form-control" aria-describedby="sizing-addon2" name="tb_mem5" id="tb_mem5" value="Member 5 ID" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Member 5 ID';}">
 						</div><br>
 					</td>
 				</tr>
@@ -205,7 +205,7 @@
 			</form>
 			<h3>User List</h3>
 			<div id="user_msg">#message</div>
-			<table id="table_result" class="table table-hover">
+			<table id="usr_table_result" class="table table-hover">
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -252,7 +252,7 @@
 			</form>
 			<h3>Group List</h3>
 			<div id="grp_msg">#message</div>
-			<table id="table_result" class="table table-hover">
+			<table id="grp_table_result" class="table table-hover">
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -290,7 +290,6 @@ $("#fm_usr_register").submit(function(e)
 {
     $('#show_register_msg').html('<div class=gen>Registering...</div>');
     
-    var RE_NAME = /^(\w)+$/;
     var RE_MOBILE = /^\d{10}$/;
     var RE_EMAIL = /^(\w[\-\.]*\w+@(\w+\.)+[A-Za-z]+$)/;
     
@@ -306,11 +305,6 @@ $("#fm_usr_register").submit(function(e)
   					tb_college:tb_college
     }
     
-    if (!RE_NAME.test(tb_name)) {
-		//alert("Invalid Name");
-        $('#show_register_msg').html('<div class=gen>Check Name</div>');
-		return false;
-	}
 	if (!RE_EMAIL.test(tb_email)) {
 		alert("Invalid Email ID");
         $('#show_register_msg').html('<div class=gen>Check Email ID</div>');
@@ -319,11 +313,6 @@ $("#fm_usr_register").submit(function(e)
     if (!RE_MOBILE.test(tb_mobile)) {
 		alert("Invalid Mobile Number");
         $('#show_register_msg').html('<div class=gen>Check Mobile Number</div>');
-		return false;
-	}
-	if (!RE_NAME.test(tb_college)) {
-		alert("Invalid College");
-        $('#show_register_msg').html('<div class=gen>Check College</div>');
 		return false;
 	}
 
@@ -352,6 +341,7 @@ $("#fm_grp_register").submit(function(e){
     
     $('#grp_register_msg').html('Registering...');
   	var RE_NAME = /^(\w)+$/;
+    var RE_NUM = /^\d{2,3,4}$/;
     var tb_grp_name = $('#tb_grp_name').val();
     var cb_event = $('#cb_event').val();
     var tb_mem1 = $('#tb_mem1').val();
@@ -368,26 +358,28 @@ $("#fm_grp_register").submit(function(e){
 		alert("Select a Event");
 		return false;
 	}
-	if (!RE_NAME.test(tb_mem1)) {
-		alert("Invalid Member 1 Name");
+	/*if (!RE_NUM.test(tb_mem1)) {
+		alert("Invalid Member 1 ID");
 		return false;
 	}
-	if (!RE_NAME.test(tb_mem2)) {
-		alert("Invalid Member 2 Name");
+	if (!RE_NUM.test(tb_mem2)) {
+		alert("Invalid Member 2 ID");
 		return false;
 	}
-	if (!RE_NAME.test(tb_mem3)) {
-		alert("Invalid Member 3 Name");
+	if (!RE_NUM.test(tb_mem3)) {
+		alert("Invalid Member 3 ID");
 		return false;
 	}
-	if (!RE_NAME.test(tb_mem4)) {
-		alert("Invalid Member 4 Name");
+	if (!RE_NUM.test(tb_mem4)) {
+		alert("Invalid Member 4 ID");
 		return false;
 	}
-    if (!RE_NAME.test(tb_mem5)) {
-		alert("Invalid Member 5 Name");
-		return false;
-	}
+    if (cb_event=="CS"){
+        if (!RE_NUM.test(tb_mem5)) {
+            alert("Invalid Member 5 ID");
+            return false;
+        }
+    }*/
 
     var formURL = $(this).attr("action");
     var data = {
@@ -437,11 +429,11 @@ $("#fm_usr_search").submit(function(e){
             success: function (data) {
                                  //alert(data);
   								 if(data!=''){
-                                    $("#table_result tbody > tr").remove();
+                                    $("#usr_table_result tbody > tr").remove();
                                     $('#user_msg').html(data.length+' records found');
                                     //alert(data[0][0]);
                                     for(var i=0;i<data.length;i++){
-                                        $('#table_result > tbody:last-child').append('<tr><td>'+data[i][0]+'</td><td>'+data[i][1]+'</td><td>'+data[i][2]+'</td><td>'+data[i][3]+'</td><td>'+data[i][4]+'</td></tr>');
+                                        $('#usr_table_result > tbody:last-child').append('<tr><td>'+data[i][0]+'</td><td>'+data[i][1]+'</td><td>'+data[i][2]+'</td><td>'+data[i][3]+'</td><td>'+data[i][4]+'</td></tr>');
                                     };
   								 }else{
                                      $('#user_msg').html('no records found');
@@ -470,11 +462,16 @@ $("#fm_grp_search").submit(function(e){
             success: function (data) {
                                  //alert(data);
   								 if(data!=''){
-                                    $("#table_result tbody > tr").remove();
+                                    $("#grp_table_result tbody > tr").remove();
                                     $('#grp_msg').html(data.length+' records found');
                                     //alert(data[0][0]);
                                     for(var i=0;i<data.length;i++){
-                                        $('#table_result > tbody:last-child').append('<tr><td>'+data[i][0]+'</td><td>'+data[i][1]+'</td><td>'+data[i][2]+'</td><td>'+data[i][3]+'</td><td>'+data[i][4]+'</td><td>'+data[i][5]+'</td><td>'+data[i][6]+'</td><td>'+data[i][7]+'</td></tr>');
+                                        /*data[i][3]='<a href="php/user_details.php?id='+data[i][3]+'">'+data[i][3]+'</a>';
+                                        data[i][4]='<a href="php/user_details.php?id='+data[i][4]+'">'+data[i][4]+'</a>';
+                                        data[i][5]='<a href="php/user_details.php?id='+data[i][5]+'">'+data[i][5]+'</a>';
+                                        data[i][6]='<a href="php/user_details.php?id='+data[i][6]+'">'+data[i][6]+'</a>';
+                                        data[i][7]='<a href="php/user_details.php?id='+data[i][7]+'">'+data[i][7]+'</a>';*/
+                                        $('#grp_table_result > tbody:last-child').append('<tr><td>'+data[i][0]+'</td><td>'+data[i][1]+'</td><td>'+data[i][2]+'</td><td>'+data[i][3]+'</td><td>'+data[i][4]+'</td><td>'+data[i][5]+'</td><td>'+data[i][6]+'</td><td>'+data[i][7]+'</td></tr>');
                                     };
   								 }else{
                                      $('#grp_msg').html('no records found');

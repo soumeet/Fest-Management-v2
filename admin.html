@@ -33,167 +33,75 @@
   </div>
 </nav>
 
-<div  class="container">
+<div  class="container"  style="width: 100%;">
   <ul class="nav nav-tabs">
-         <li><a data-toggle="tab" href="#client_registration">Client Registration</a></li>
-         <li><a data-toggle="tab" href="#user_search">Users</a></li>
-         <li><a data-toggle="tab" href="#group_search">Groups</a></li>
-       </ul>
-      <div class="tab-content">
-        <div id="client_registration" class="tab-pane fade">
-          <center>
-            <h2>Client Registration</h2><br>
-          </center>
-          <center>
-            <form name="fm_cln_register" onsubmit="return client_validation(fm_cln_register)" method="post" action="client_registered.php">
-              <table>
-                <tr>
-                  <td>
-                    <div class="input-group">
-                      <span class="input-group-addon" id="sizing-addon2"></span>
-                      <input type="text" class="form-control" placeholder="First Name" aria-describedby="sizing-addon2" name="tb_fname" id="tb_fname">
-                    </div><br>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="input-group">
-                      <span class="input-group-addon" id="sizing-addon2"></span>
-                      <input type="text" class="form-control" placeholder="Last Name" aria-describedby="sizing-addon2" name="tb_lname" id="tb_lname">
-                    </div><br>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="input-group">
-                      <span class="input-group-addon" id="sizing-addon2"></span>
-                      <input type="text" class="form-control" placeholder="Mobile Number" aria-describedby="sizing-addon2" name="tb_mobile" id="tb_mobile">
-                    </div><br>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="input-group">
-                      <span class="input-group-addon" id="sizing-addon2"></span>
-                      <input type="text" class="form-control" placeholder="Email ID" aria-describedby="sizing-addon2" name="tb_email" id="tb_email">
-                    </div><br>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="input-group">
-                      <span class="input-group-addon" id="sizing-addon2"></span>
-                      <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2" name="tb_username" id="tb_username">
-                    </div><br>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="input-group">
-                      <span class="input-group-addon" id="sizing-addon2"></span>
-                      <input type="text" class="form-control" placeholder="Password" aria-describedby="sizing-addon2" name="tb_password" id="tb_password">
-                    </div><br>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label class="radio inline">
-                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="rb_gender" id="rb_gender" value="M" checked>
-                        Male&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="rb_gender" id="rb_gender" value="F">
-                        Female
-                    </label><br>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    &nbsp&nbsp
-                    <input class="btn btn-default" type="submit" name="bt_clnt_register" value="Register">
-                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    <input class="btn btn-default" type="submit" name="bt_cancel" value="Cancel">
-                  </td>
-                </tr>
-              </table>
-            </form>
-          </center>
-        </div>
-          <div id="user_search" class="tab-pane fade">
+      <li><a data-toggle="tab" href="#user_search">Users</a></li>
+      <li><a data-toggle="tab" href="#group_search">Groups</a></li>
+  </ul>
+  <div class="tab-content">
+      <div id="user_search" class="tab-pane fade">
             <br><br>
-            <form name="fm_adm_usr" action="" onsubmit="return validation(fm_adm_usr)" method="GET">
-              <center>
-                <table>
-                  <tr>
-                    <td>
-                      <div class="input-group">
-                        <span class="input-group-addon" id="basic-addon1">@</span>
-                        <input type="text" class="form-control" placeholder="User ID" aria-describedby="basic-addon1" name="tb_uid" id="tb_uid">
-                      </div>
-                    </td>
-                    <td>
-                      &nbsp<input class="btn btn-default" type="submit" value="Search" name="bt_usr_search" id="bt_usr_search">
-                    </td>
-                  </tr>
-                </table></center>
+            <form method="post" name="fm_adm_usr" id="fm_adm_usr" action="php/user_search.php">
+              <div class="row">
+                <div class="col-md-2 col-md-offset-2">
+                    <div class="form-group">
+                        <select class="form-control" name="cb_by" id="cb_by">
+                            <option value="ID">ID</option>
+                            <option value="NAME">Name</option>
+							<option value="MOBILE">Mobile</option>
+				            <option value="EMAIL">Email</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="sizing-addon2">@</span>
+				        <input type="text" class="form-control" aria-describedby="sizing-addon2" name="tb_type" id="tb_type" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
+				    </div>
+                </div>
+                <div class="col-md-1">
+                    <input class="btn btn-default" type="submit" value="Search" name="bt_usr_search" id="bt_usr_search">
+                </div>
+            </div>
               </form>
-                <h2>User List</h2>
+                <h3>User List</h3>
+                <div id="usr_msg">#message</div>
                 <table class="table table-hover">
                   <thead>
                     <tr>
                       <th>ID</th>
                       <th>Name</th>
-                      <th>Gender</th>
                       <th>Mobile</th>
                       <th>Email ID</th>
                       <th>College</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php
-                    if(isset($usr_result)){
-                    while ($row = mysqli_fetch_array($usr_result)){
-                      $uid = $row['id'];
-                      $name = $row['name'];
-                      $gender = $row['gender'];
-                      $mobile = $row['mobile'];
-                      $email = $row['email'];
-                      $college = $row['college'];
-                      ?>
-                      <form name="fm_adm_usr_update" action="" onsubmit="return validation(fm_adm_usr)" method="GET">
+                      <form method="post" id="fm_adm_usr_update" name="fm_adm_usr_update" action="php/user_update.php">
                       <tr>
                         <td>
                           <div class="input-group">
-                            <input type="text" readonly class="form-control" placeholder="ID" aria-describedby="basic-addon1"  name="tb_uid" id="tb_uid" value="<?php  echo $uid; ?>">
+                            <input type="text" readonly class="form-control" placeholder="ID" aria-describedby="basic-addon1"  name="tb_uid" id="tb_uid" value="">
                           </div>
                         </td>
                         <td>
                           <div class="input-group">
-                            <input type="text" class="form-control" placeholder="User Name" aria-describedby="basic-addon1"  name="tb_name" id="tb_name" value="<?php echo $name; ?>">
-                          </div>
-                        </td>
-                        <td>
-                          <label class="radio inline">
-                            <center>
-                              <input type="radio" name="rb_gender" id="rb_gender" value="MALE" <?php if($gender=='M') echo "checked"; ?>>
-                              M&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                              <input type="radio" name="rb_gender" id="rb_gender" value="FEMALE" <?php if($gender=='F') echo "checked"; ?>>
-                              F
-                            </center>
-                          </label>
-                        </td>
-                        <td>
-                          <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Mobile" aria-describedby="basic-addon1" name="tb_mobile" id="tb_mobile" value="<?php echo $mobile; ?>">
+                            <input type="text" class="form-control" placeholder="Name" aria-describedby="basic-addon1"  name="tb_name" id="tb_name" value="">
                           </div>
                         </td>
                         <td>
                           <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Email" aria-describedby="basic-addon1" name="tb_email" id="tb_email" value="<?php echo $email; ?>">
+                            <input type="text" class="form-control" placeholder="Mobile" aria-describedby="basic-addon1" name="tb_mobile" id="tb_mobile" value="">
                           </div>
                         </td>
                         <td>
                           <div class="input-group">
-                            <input type="text" class="form-control" placeholder="College" aria-describedby="basic-addon1" name="tb_college" id="tb_college" value="<?php echo $college; ?>">
+                            <input type="text" class="form-control" placeholder="Email" aria-describedby="basic-addon1" name="tb_email" id="tb_email" value="">
+                          </div>
+                        </td>
+                        <td>
+                          <div class="input-group">
+                            <input type="text" class="form-control" placeholder="College" aria-describedby="basic-addon1" name="tb_college" id="tb_college" value="">
                           </div>
                         </td>
                       </tr>
@@ -210,31 +118,35 @@
                         <td></td>
                       </tr>
                       </form>
-                      <?php }} ?>
                     </tbody>
                   </table>
               </div>
               <div id="group_search" class="tab-pane fade">
-                <center>
-                  <h2>  </h2>
-                </center>
-                <form name="fm_adm_grp" action="" onsubmit="return validation(fm_adm_grp)" method="GET">
-                  <center>
-                    <table>
-                      <tr>
-                        <td>
+                <br><br>
+                <form method="post" name="fm_adm_grp" id="fm_adm_grp" action="php/group_search.php">
+                  <div class="row">
+                      <div class="col-md-2 col-md-offset-2">
+                          <div class="form-group">
+                            <select class="form-control" name="cb_gby" id="cb_gby">
+                                <option value="ID">ID</option>
+                                <option value="NAME">Name</option>
+                                <option value="EVENT">Event</option>
+                            </select>
+                         </div>
+                      </div>
+                      <div class="col-md-4">
                           <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon1">@</span>
-                            <input type="text" class="form-control" placeholder="Group ID" aria-describedby="basic-addon1" name="tb_gid" id="tb_gid">
-                          </div>
-                        </td>
-                        <td>
-                          &nbsp<input class="btn btn-default" type="submit" value="Search" name="bt_grp_search" id="bt_grp_search">
-                        </td>
-                      </tr>
-                    </table></center>
-                  </form>
-                    <h2>Group List</h2>
+                            <span class="input-group-addon" id="sizing-addon2">@</span>
+                            <input type="text" class="form-control" aria-describedby="sizing-addon2" name="tb_gtype" id="tb_gtype" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
+                        </div>
+                      </div>
+                      <div class="col-md-1">
+                          <input class="btn btn-default" type="submit" value="Search" name="bt_grp_search" id="bt_grp_search">
+                      </div>
+                </div>
+			 </form>
+			<h3>Group List</h3>
+			<div id="grp_msg">#message</div>
                     <table class="table table-hover">
                       <thead>
                         <tr>
@@ -248,61 +160,50 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <?php
-                        if(isset($grp_result)){
-                        while ($row = mysqli_fetch_array($grp_result)){
-                          $gid = $row['group_id'];
-                          $name = $row['name'];
-                          $event = $row['event'];
-                          $mem1 = $row['member1'];
-                          $mem2 = $row['member2'];
-                          $mem3 = $row['member3'];
-                          $mem4 = $row['member4'];
-                        ?>
-                        <form name="fm_adm_usr_update" action="" onsubmit="return validation(fm_adm_usr)" method="GET">
+                        <form method="post" id="fm_adm_usr_update" name="fm_adm_usr_update" action="php/group_search.php">
                           <tr>
                             <td>
-                              <div class="input-group">
-                                <input type="text" readonly class="form-control" placeholder="ID" aria-describedby="basic-addon1"  name="tb_gid" id="tb_gid" value="<?php  echo $gid; ?>">
-                              </div>
+                                <div class="input-group">
+                                    <input type="text" readonly class="form-control" placeholder="ID" aria-describedby="basic-addon2"  name="tb_gid" id="tb_gid" value="">
+                                </div>
                             </td>
                             <td>
                               <div class="input-group">
-                                <input type="text" class="form-control" placeholder="User Name" aria-describedby="basic-addon1"  name="tb_name" id="tb_name" value="<?php echo $name; ?>">
+                                <input type="text" class="form-control" placeholder="User Name" aria-describedby="basic-addon2"  name="tb_name" id="tb_name" value="">
                               </div>
                             </td>
                             <td>
                               <div class="form-group">
                                 <select class="form-control" name="cb_event" id="cb_event">
-                                  <option value="ROBOWAR" <?php if ($event=="ROBOWAR") {?> selected="selected" <?php } ?>>RoboWar</option>
-                                  <option value="ROBOEXPLORER" <?php if ($event=="ROBOEXPLORER") {?> selected="selected" <?php } ?>>RoboXplorer</option>
-                                  <option value="ROBOSOCCER"<?php if ($event=="ROBOSOCCER") {?> selected="selected" <?php } ?>>RoboSoccer</option>
-                                  <option value="CS16" <?php if ($event=="CS16") {?> selected="selected" <?php } ?>>CounterStrike</option>
-                                  <option value="FIFA"<?php if ($event=="FIFA") {?> selected="selected" <?php } ?> >Fifa</option>
-                                  <option value="NFS" <?php if ($event=="NFS") {?> selected="selected" <?php } ?>>Need For Speed</option>
-                                  <option value="CODING" <?php if ($event=="CODING") {?> selected="selected" <?php } ?>>Coding</option>
-                                  <option value="JUNKYARD" <?php if ($event=="JUNKYARD") {?> selected="selected" <?php } ?>>JunkYard</option>
+                                  <option value="ROBXING">RoBoxing</option>
+                                  <option value="ROEXPLORER">RoExplorer</option>
+                                  <option value="ROSOCCER">RoSoccer</option>
+                                  <option value="CS">CounterStrike</option>
+                                  <option value="FIFA">Fifa</option>
+                                  <option value="NFS">NeedForSpeed</option>
+                                  <option value="CODECLASH">CodeClash</option>
+                                  <option value="JUNKYARD">JunkYard</option>
                                 </select>
                               </div>
                             </td>
                             <td>
                               <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Mobile" aria-describedby="basic-addon1" name="tb_mem1" id="tb_mem1" value="<?php echo $mem1; ?>">
+                                <input type="text" class="form-control" placeholder="Mobile" aria-describedby="basic-addon2" name="tb_mem1" id="tb_mem1" value="">
                               </div>
                             </td>
                             <td>
                               <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Email" aria-describedby="basic-addon1" name="tb_mem2" id="tb_mem2" value="<?php echo $mem2; ?>">
+                                <input type="text" class="form-control" placeholder="Email" aria-describedby="basic-addon2" name="tb_mem2" id="tb_mem2" value="">
                               </div>
                             </td>
                             <td>
                               <div class="input-group">
-                                <input type="text" class="form-control" placeholder="College" aria-describedby="basic-addon1" name="tb_mem3" id="tb_mem3" value="<?php echo $mem3; ?>">
+                                <input type="text" class="form-control" placeholder="College" aria-describedby="basic-addon2" name="tb_mem3" id="tb_mem3" value="">
                               </div>
                             </td>
                             <td>
                               <div class="input-group">
-                                <input type="text" class="form-control" placeholder="College" aria-describedby="basic-addon1" name="tb_mem4" id="tb_mem4" value="<?php echo $mem4; ?>">
+                                <input type="text" class="form-control" placeholder="College" aria-describedby="basic-addon2" name="tb_mem4" id="tb_mem4" value="">
                               </div>
                             </td>
                           </tr>
@@ -320,7 +221,6 @@
                             <td></td>
                           </tr>
                           </form>
-                          <?php }} ?>
                         </tbody>
                       </table>
                   </div>
@@ -329,5 +229,74 @@
 <!--<footer class="text-center">
   <h3>copyright@2016</h3>
 </footer>-->
+<script type="text/javascript">
+
+$("#fm_adm_usr").submit(function(e){
+    var cb_by = $('#cb_by').val();
+    var tb_type = $('#tb_type').val();
+    var formURL = $(this).attr("action");
+    var data = {
+                    cb_by:cb_by,
+                    tb_type:tb_type
+    }
+    $.ajax({   
+            url : formURL,
+  			type: "POST",
+            data : data,
+            dataType: 'json',
+            success: function (data) {
+                                 //alert(data);
+  								 if(data!=''){
+                                    $("#table_result tbody > tr").remove();
+                                    $('#user_msg').html(data.length+' records found');
+                                    //alert(data[0][0]);
+                                    for(var i=0;i<data.length;i++){
+                                        $('#table_result > tbody:last-child').append('<tr><td>'+data[i][0]+'</td><td>'+data[i][1]+'</td><td>'+data[i][2]+'</td><td>'+data[i][3]+'</td><td>'+data[i][4]+'</td></tr>');
+                                    };
+  								 }else{
+                                     $('#user_msg').html('no records found');
+                                     $("#table_result tbody > tr").remove(); 
+                                 }
+  							}
+  		});
+    
+  		e.preventDefault();
+
+});
+
+$("#fm_grp_search").submit(function(e){
+    var cb_gby = $('#cb_gby').val();
+    var tb_gtype = $('#tb_gtype').val();
+    var formURL = $(this).attr("action");
+    var data = {
+                    cb_gby:cb_gby,
+                    tb_gtype:tb_gtype
+    }
+    $.ajax({   
+            url : formURL,
+  			type: "POST",
+            data : data,
+            dataType: 'json',
+            success: function (data) {
+                                 //alert(data);
+  								 if(data!=''){
+                                    $("#table_result tbody > tr").remove();
+                                    $('#grp_msg').html(data.length+' records found');
+                                    //alert(data[0][0]);
+                                    for(var i=0;i<data.length;i++){
+                                        $('#table_result > tbody:last-child').append('<tr><td>'+data[i][0]+'</td><td>'+data[i][1]+'</td><td>'+data[i][2]+'</td><td>'+data[i][3]+'</td><td>'+data[i][4]+'</td><td>'+data[i][5]+'</td><td>'+data[i][6]+'</td><td>'+data[i][7]+'</td></tr>');
+                                    };
+  								 }else{
+                                     $('#grp_msg').html('no records found');
+                                     $("#table_result tbody > tr").remove(); 
+                                 }
+  							}
+  		});
+    
+  		e.preventDefault();
+
+});
+
+</script>
 </body>
 </html>
