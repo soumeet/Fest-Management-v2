@@ -16,10 +16,7 @@
         echo "[";
         $i=1;
         while ($row = mysqli_fetch_array($result)){
-            if($row['group_id'] < 100)
-               $id='SNKLP00'.$row['group_id'];
-            else if($row['group_id'] < 1000)
-               $id='SNKLP0'.$row['group_id'];
+            $id=$row['group_id'];
             $name=$row['name'];
             $event=$row['event'];
             $mem1 = mysqli_fetch_row(mysqli_query($con, "SELECT name FROM db_users WHERE id = '$row[member1]'"))[0];

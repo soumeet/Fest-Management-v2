@@ -9,16 +9,6 @@ if(isset($_POST['tb_grp_name'])) {
 	$mem3 = $_POST['tb_mem3'];
 	$mem4 = $_POST['tb_mem4'];
     $mem5 = $_POST['tb_mem5'];
-/*
-	echo "Registration Details";
-	echo "<br>GROUP NAME: ".$name;
-	echo "<br>EVENT: ".$event;
-	echo "<br>MEMBER 1: ".$mem1;
-	echo "<br>MEMBER 2: ".$mem2;
-	echo "<br>MEMBER 3: ".$mem3;
-	echo "<br>MEMBER 4: ".$mem4;
-	echo "<br>MEMBER 5: ".$mem5;
-*/
     $sql = "insert into db_groups (
             name,
             event,
@@ -37,13 +27,7 @@ if(isset($_POST['tb_grp_name'])) {
             '$mem5')";
     $result = mysqli_query($con, $sql);
 	if ($result) {
-        //echo "<b>"."<i>"."<br>Data Insertion Succession"."</i>"."</b>";
-        $id=mysqli_insert_id($con);
-        if($id < 100)
-           $data=array('res' => '1', 'id' => 'SNKLP00'.$id);
-        else if($id < 1000)
-           $data=array('res' => '1', 'id' => 'SNKLP0'.$id);
-
+        $data=array('res' => '1', 'id' => ''.$id);
         $js_str = json_encode($data);
         echo $js_str;
         exit;

@@ -1,3 +1,8 @@
+<?php
+session_start();
+if(!isset($_SESSION['sid']))
+    header("location:login.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +10,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-  	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato" >
+  	<link rel="stylesheet" type="text/css" href="css/lato.css" >
   	<link rel="stylesheet"  type="text/css" href="css/montserrat.css" >
   	<link rel="stylesheet" href="css/dynamics.css">
   	<script src="js/jquery.min.js"></script>
@@ -24,11 +29,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="client.html">Sankalp'16</a>
+      <a class="navbar-brand" href="client.php">Sankalp'16</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-	<li><a href="login.html">Logout</a></li>
+	<li><a href="php/logout.php">Logout</a></li>
       </ul>
     </div>
   </div>
@@ -111,15 +116,15 @@
 						<div class="form-group">
 								<select class="form-control" name="cb_event" id="cb_event">
 									<option value="EVENT">Event</option>
-									<option value="ROEXPLORER">RoExplorer</option>
-									<option value="ROBOXING">RoBoxing</option>
-									<option value="ROSOCCER">RoSoccer</option>
+									<option value="ROE">RoExplorer</option>
+									<option value="ROB">RoBoxing</option>
+									<option value="ROS">RoSoccer</option>
 									<option value="CS">Counter Strike</option>
 									<option value="FIFA">Fifa</option>
 									<option value="NFS">Need For Speed</option>
-									<option value="MOMENTIKA">Momentika</option>
-									<option value="JUNKYARD">JunkYard</option>
-									<option value="CODECLASH">CodeClash</option>
+									<option value="MOM">Momentika</option>
+									<option value="JUN">JunkYard</option>
+									<option value="COD">CodeClash</option>
 								</select>
                         </div>
 					</td>
@@ -291,7 +296,7 @@ $("#fm_usr_register").submit(function(e)
     $('#show_register_msg').html('<div class=gen>Registering...</div>');
     
     var RE_MOBILE = /^\d{10}$/;
-    var RE_EMAIL = /^(\w[\-\.]*\w+@(\w+\.)+[A-Za-z]+$)/;
+    //var RE_EMAIL = /^(\w[\-\.]*\w+@(\w+\.)+[A-Za-z]+$)/;
     
     var tb_name = $('#tb_name').val();
     var tb_email = $('#tb_email').val();
@@ -305,11 +310,11 @@ $("#fm_usr_register").submit(function(e)
   					tb_college:tb_college
     }
     
-	if (!RE_EMAIL.test(tb_email)) {
+	/*if (!RE_EMAIL.test(tb_email)) {
 		alert("Invalid Email ID");
         $('#show_register_msg').html('<div class=gen>Check Email ID</div>');
 		return false;
-	}
+	}*/
     if (!RE_MOBILE.test(tb_mobile)) {
 		alert("Invalid Mobile Number");
         $('#show_register_msg').html('<div class=gen>Check Mobile Number</div>');
@@ -324,7 +329,7 @@ $("#fm_usr_register").submit(function(e)
             success: function (data) {
   								 if(data.res=='1'){
   									$('#show_register_msg').html('<div class=gen>Thank you very much, You\'ve been registered.</div>');
-                                    alert("Your registration ID: "+data.id);
+                                    alert("Your User ID: SNKLP"+data.id);
                                     $("#fm_usr_register")[0].reset();
                                     $('#show_register_msg').html('<div class=gen>Please provide us with correct details.</div>');
   								 }else if(data.res=='5'){
@@ -340,8 +345,8 @@ $("#fm_usr_register").submit(function(e)
 $("#fm_grp_register").submit(function(e){
     
     $('#grp_register_msg').html('Registering...');
-  	var RE_NAME = /^(\w)+$/;
-    var RE_NUM = /^\d{2,3,4}$/;
+  	var RE_NAME = /^[a-z0-9]+$/i;
+    var RE_NUM = /^[0-9]*$/;
     var tb_grp_name = $('#tb_grp_name').val();
     var cb_event = $('#cb_event').val();
     var tb_mem1 = $('#tb_mem1').val();
@@ -350,37 +355,69 @@ $("#fm_grp_register").submit(function(e){
     var tb_mem4 = $('#tb_mem4').val();
     var tb_mem5 = $('#tb_mem5').val();
     
-    if (!RE_NAME.test(tb_grp_name)){
-		alert("Group Name cannot be empty");
-		return false;
-	}
-	if (cb_event=="EVENT") {
+    if (cb_event=="EVENT") {
 		alert("Select a Event");
 		return false;
-	}
-	/*if (!RE_NUM.test(tb_mem1)) {
-		alert("Invalid Member 1 ID");
-		return false;
-	}
-	if (!RE_NUM.test(tb_mem2)) {
-		alert("Invalid Member 2 ID");
-		return false;
-	}
-	if (!RE_NUM.test(tb_mem3)) {
-		alert("Invalid Member 3 ID");
-		return false;
-	}
-	if (!RE_NUM.test(tb_mem4)) {
-		alert("Invalid Member 4 ID");
-		return false;
-	}
-    if (cb_event=="CS"){
-        if (!RE_NUM.test(tb_mem5)) {
-            alert("Invalid Member 5 ID");
+    }else{
+        if (!RE_NAME.test(tb_grp_name)){
+            alert("Group Name cannot be empty");
             return false;
-        }
-    }*/
-
+	   }else{
+           if(cb_event=="NFS" || cb_event=="CS" || cb_event=="MOM"){
+               if (!RE_NUM.test(tb_mem1)) {
+                    alert("Invalid Member 1 ID");
+                    return false;
+	       }       
+           }else if(cb_event=="JUN" || cb_event=="COD"){
+               if (!RE_NUM.test(tb_mem1)) {
+                    alert("Invalid Member 1 ID");
+                    return false;
+                }else if (!RE_NUM.test(tb_mem2)) {
+                    alert("Invalid Member 2 ID");
+                    return false;
+                }
+           }else if(cb_event=="ROE" || cb_event=="ROB" || cb_event=="ROS"){
+                if(!RE_NUM.test(tb_mem1)) {
+                    alert("Invalid Member 1 ID");
+                    return false;
+                }
+                if (!RE_NUM.test(tb_mem2)) {
+                    alert("Invalid Member 2 ID");
+                    return false;
+                }
+                if (!RE_NUM.test(tb_mem3)) {
+                    alert("Invalid Member 3 ID");
+                    return false;
+                }
+                if (!RE_NUM.test(tb_mem4)) {
+                    alert("Invalid Member 4 ID");
+                    return false;
+                }       
+           }else if(cb_event=="CS"){
+               if (!RE_NUM.test(tb_mem1)) {
+                    alert("Invalid Member 1 ID");
+                    return false;
+                }
+                if (!RE_NUM.test(tb_mem2)) {
+                    alert("Invalid Member 2 ID");
+                    return false;
+                }
+                if (!RE_NUM.test(tb_mem3)) {
+                    alert("Invalid Member 3 ID");
+                    return false;
+                }
+                if (!RE_NUM.test(tb_mem4)) {
+                    alert("Invalid Member 4 ID");
+                    return false;
+                }
+                if (!RE_NUM.test(tb_mem5)) {
+                    alert("Invalid Member 5 ID");
+                    return false;
+                }
+           }
+       }
+    }
+    
     var formURL = $(this).attr("action");
     var data = {
                     tb_grp_name:tb_grp_name,
@@ -401,7 +438,7 @@ $("#fm_grp_register").submit(function(e){
                                 //alert(data.res);
                                 if(data.res=='1'){
   									$('#grp_register_msg').html('<div class=gen>Thank you very much, You\'ve been registered.</div>');
-                                    alert("Your registration ID: "+data.id);
+                                    alert("Your Team ID: SNKLP"+data.id);
                                     $("#fm_grp_register")[0].reset();
                                     $('#grp_register_msg').html('<div class=gen>Please provide us with correct details.</div>');
   								 }else{
@@ -415,7 +452,7 @@ $("#fm_grp_register").submit(function(e){
 
 $("#fm_usr_search").submit(function(e){
     var cb_by = $('#cb_by').val();
-    var tb_type = $('#tb_type').val();
+    var tb_type = $('#tb_type').val().toUpperCase();
     var formURL = $(this).attr("action");
     var data = {
                     cb_by:cb_by,
@@ -448,7 +485,7 @@ $("#fm_usr_search").submit(function(e){
 
 $("#fm_grp_search").submit(function(e){
     var cb_gby = $('#cb_gby').val();
-    var tb_gtype = $('#tb_gtype').val();
+    var tb_gtype = $('#tb_gtype').val().toUpperCase();
     var formURL = $(this).attr("action");
     var data = {
                     cb_gby:cb_gby,

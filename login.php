@@ -1,11 +1,15 @@
-  <!DOCTYPE html>
+<?php
+session_start();	
+if(!empty($_SESSION['sid']))
+    header("location: client.php");
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Login</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato" >
   <link rel="stylesheet"  type="text/css" href="css/montserrat.css" >
   <link rel="stylesheet" href="css/dynamics.css">
 
@@ -16,11 +20,11 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <!--<span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>-->
       </button>
-      <a class="navbar-brand" href="login.html">Sankalp'16</a>
+      <a class="navbar-brand" href="logout.php">Sankalp'16</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -31,11 +35,11 @@
 
 <div  class="container">
 <ul class="nav nav-pills nav-justified">
-    <li class="active"><a data-toggle="pill" href="#adm_login">Admin</a></li>
+    <!--<li class="active"><a data-toggle="pill" href="#adm_login">Admin</a></li>-->
     <li><a data-toggle="pill" href="#client_login">Client</a></li>
   </ul>
    <div class="tab-content">
-    <div id="adm_login" class="tab-pane fade in active">
+    <!--<div id="adm_login" class="tab-pane fade in active">
       <br><br><br><br>
       <form name="fm_adm_login" action="admin.html" onsubmit="return login_validation(fm_adm_login)" method="post">
         <center>
@@ -65,7 +69,7 @@
         </table>
         </center>
       </form>
-    </div>
+    </div>-->
 
        <!--onsubmit="return login_validation(fm_client_login)"-->
     <!--<div class="col-md-4 contact-form">
@@ -84,9 +88,9 @@
         </form>
 </div>-->
        
-    <div id="client_login" class="tab-pane fade">
+    <div id="client_login" class="tab-pane fade in active">
       <br><br><br><br>
-      <form class="ajax-form" name="fm_client_login" onsubmit="return login_validation(fm_client_login)" action="php/verify.php" method="post">
+      <form class="ajax-form" name="fm_client_login" id="fm_client_login"  action="php/verify.php" method="post">
         <center>
         <table>
           <tr>
@@ -107,7 +111,7 @@
           </tr>
           <tr>
             <td>
-              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
               <input class="btn btn-default" type="submit" name="bt_clnt_login" value="Login" >
             </td>
           </tr>
